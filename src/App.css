@@ -1,38 +1,414 @@
-.App {
+header {
+  background-image: url(images/sun.jpeg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #ffffff;
+  padding: 20px 0;
   text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Center content horizontally */
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.logo {
+  margin-right: 20px;
+  float: left;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.logo img {
+  height: 50%;
+  width: 25%;
+  border-radius: 50px;
+}
+
+@media (max-width: 768px) {
+  .logo {
+    margin-right: 0;
+  }
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+  .search-bar {
+    margin-top: 10px;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.sub-nav ul {
+  list-style-type: none;
+  padding: 0;
   display: flex;
-  flex-direction: column;
-  align-items: center;
+  justify-content: center; /* Align items horizontally */
+}
+
+.sub-nav ul li {
+  margin-right: 20px;
+}
+
+.sub-nav ul li:last-child {
+  margin-right: 0;
+}
+
+.sub-nav ul li button {
+  --border-color: linear-gradient(-45deg, #ffae00, #7e03aa, #00fffb);
+  --border-width: 0.125em;
+  --curve-size: 0.5em;
+  --blur: 30px;
+  --bg: #080312;
+  --color: #afffff;
+  color: var(--color);
+  cursor: pointer;
+  /* use position: relative; so that BG is only for .btn */
+  position: relative;
+  isolation: isolate;
+  display: inline-grid;
+  place-content: center;
+  padding: 0.5em 1.5em;
+  font-size: 17px;
+  border: 0;
+  text-transform: uppercase;
+  box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.6);
+  clip-path: polygon(
+      /* Top-left */ 0% var(--curve-size),
+      var(--curve-size) 0,
+      /* top-right */ 100% 0,
+      100% calc(100% - var(--curve-size)),
+      /* bottom-right 1 */ calc(100% - var(--curve-size)) 100%,
+      /* bottom-right 2 */ 0 100%
+  );
+  transition: color 250ms;
+}
+
+.sub-nav ul li button::after,
+.sub-nav ul li button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+}
+
+.sub-nav ul li button::before {
+  background: var(--border-color);
+  background-size: 300% 300%;
+  animation: move-bg7234 5s ease infinite;
+  z-index: -2;
+}
+
+@keyframes move-bg7234 {
+  0% {
+      background-position: 31% 0%;
+  }
+
+  50% {
+      background-position: 70% 100%;
+  }
+
+  100% {
+      background-position: 31% 0%;
+  }
+}
+
+.sub-nav ul li button::after {
+  background: var(--bg);
+  z-index: -1;
+  clip-path: polygon(
+      /* Top-left */ var(--border-width)
+      calc(var(--curve-size) + var(--border-width) * 0.5),
+      calc(var(--curve-size) + var(--border-width) * 0.5) var(--border-width),
+      /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+      /* bottom-right 2 */ var(--border-width) calc(100% - var(--border-width))
+  );
+  transition: clip-path 500ms;
+}
+
+.sub-nav ul li button:where(:hover, :focus)::after {
+  clip-path: polygon(
+      /* Top-left */ calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      calc(100% - var(--border-width)) var(--border-width),
+      /* top-right */ calc(100% - var(--border-width)) var(--border-width),
+      calc(100% - var(--border-width))
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5)),
+      /* bottom-right 1 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width)),
+      /* bottom-right 2 */
+      calc(100% - calc(var(--curve-size) + var(--border-width) * 0.5))
+      calc(100% - var(--border-width))
+  );
+  transition: 200ms;
+}
+
+.sub-nav ul li button:where(:hover, :focus) {
+  color: #fff;
+}
+
+
+body {
+  font-family: 'Times New Roman', Times, serif, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4;
+}
+
+.welcome-message {
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  flex-direction: column;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #0e0d0d;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  border-radius: 25px;
+  animation: flash 1.5s infinite;
+}
+
+.welcome-message p {
+  margin: 10px 0;
+}
+
+.welcome-message p:first-child {
+  font-weight: bold;
+  font-size: 20px;
+  color: #ff9900;
+}
+
+@keyframes flash {
+  0% {
+    outline: 1px solid transparent;
+  }
+  50% {
+    outline: 1px solid #00FF7F;
+  }
+  100% {
+    outline: 1px solid transparent;
+  }
+}
+
+#form-ui {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin-bottom: 30px;
+}
+
+#form {
+  width: 300px;
+  padding: 25px;
+  background-color: #161616;
+  box-shadow: 0px 15px 60px #00FF7F;
+  outline: 1px solid #2b9962;
+  border-radius: 10px;
+}
+
+#form-body {
+  width: 230px;
+  margin: auto;
+}
+
+#welcome-lines {
+  text-align: center;
+  line-height: 1;
+}
+
+#welcome-line-1 {
+  color: #00FF7F;
+  font-weight: 600;
+  font-size: 24px;
+}
+
+#welcome-line-2 {
+  color: #ffffff;
+  font-size: 14px;
+  margin-top: 10px;
+}
+
+#input-area {
+  margin-top: 20px;
+}
+
+.form-inp {
+  margin-bottom: 15px;
+}
+
+#form-body p {
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-inp input[type="text"],
+.form-inp input[type="file"] {
+  width: 100%;
+  padding: 10px;
+  background-color: #080808;
+  color: #00FF7F;
+  border: none;
+  border-radius: 8px;
+  outline: none;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+#submit-button-cvr {
+  margin-top: 20px;
+}
+
+#submit-button {
+  width: 100%;
+  padding: 12px;
+  background-color: #00FF7F;
+  color: #161616;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#submit-button:hover {
+  background-color: #161616;
+  color: #00FF7F;
+}
+
+.search-bar input {
+  padding: 8px;
+  width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  margin-right: 50px;
+  border-radius: 10px;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 140vh;
+  position: relative;
+}
+
+main {
+  flex-grow: 1;
+  margin-bottom: 0;
+  background-image: url('./images/background.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.footer {
+  position: sticky;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.footer-link {
+  color: white;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+footer.footer {
+  text-align: center;
+  background-color: #bfc0b0;
+  justify-content: center;
+  padding: 20px 0;
+  color: rgb(6, 51, 88);
+  width: 100%;
+  max-height: 20px;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: Arial, sans-serif;
+  font-size: 18px;
+  font-weight: bold;
+  text-decoration: underline;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.department-filter {
+  margin-bottom: 20px;
+}
+
+.department-filter label {
+  margin-right: 10px;
+}
+
+.department-filter select {
+  padding: 5px;
+}
+
+.search-results-container {
+  padding: 20px;
+  margin-bottom: 50px;
+  background-color: #0b1725;
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+}
+
+.books-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.book-card {
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: transparent;
+  border-radius: 8px;
+  color: #ffffff;
+  width: calc(33% - 20px);
+  box-shadow: 0 4px 8px rgba(240, 229, 229, 0.1);
+}
+
+.book-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 8px;
+}
+
+.book-card p {
+  margin: 6px 0;
+}
+
+.book-card a {
+  display: block;
+  margin-top: 10px;
+  color: #007bff;
+  text-decoration: none;
+}
+
+.book-card a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+  .book-card {
+    width: calc(100% - 20px);
   }
 }
