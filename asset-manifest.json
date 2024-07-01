@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/Monikaips/EBookBank-react.git/static/css/main.7de278da.css",
-    "main.js": "/Monikaips/EBookBank-react.git/static/js/main.53237921.js",
-    "static/js/453.4bb114b4.chunk.js": "/Monikaips/EBookBank-react.git/static/js/453.4bb114b4.chunk.js",
-    "static/media/logo.jpg": "/Monikaips/EBookBank-react.git/static/media/logo.1fbcbe77c6f422c0a4b3.jpg",
-    "static/media/background.jpg": "/Monikaips/EBookBank-react.git/static/media/background.f9addbe2263ed7db2a8a.jpg",
-    "index.html": "/Monikaips/EBookBank-react.git/index.html",
-    "main.7de278da.css.map": "/Monikaips/EBookBank-react.git/static/css/main.7de278da.css.map",
-    "main.53237921.js.map": "/Monikaips/EBookBank-react.git/static/js/main.53237921.js.map",
-    "453.4bb114b4.chunk.js.map": "/Monikaips/EBookBank-react.git/static/js/453.4bb114b4.chunk.js.map"
+    "main.css": "/Monikaips/EBookBank-react/static/css/main.605c32bc.css",
+    "main.js": "/Monikaips/EBookBank-react/static/js/main.1bed2271.js",
+    "static/js/453.4bb114b4.chunk.js": "/Monikaips/EBookBank-react/static/js/453.4bb114b4.chunk.js",
+    "static/media/logo.jpg": "/Monikaips/EBookBank-react/static/media/logo.1fbcbe77c6f422c0a4b3.jpg",
+    "static/media/background.jpg": "/Monikaips/EBookBank-react/static/media/background.f9addbe2263ed7db2a8a.jpg",
+    "index.html": "/Monikaips/EBookBank-react/index.html",
+    "main.605c32bc.css.map": "/Monikaips/EBookBank-react/static/css/main.605c32bc.css.map",
+    "main.1bed2271.js.map": "/Monikaips/EBookBank-react/static/js/main.1bed2271.js.map",
+    "453.4bb114b4.chunk.js.map": "/Monikaips/EBookBank-react/static/js/453.4bb114b4.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7de278da.css",
-    "static/js/main.53237921.js"
+    "static/css/main.605c32bc.css",
+    "static/js/main.1bed2271.js"
   ]
 }
